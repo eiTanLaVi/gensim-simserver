@@ -337,7 +337,7 @@ class SimModel(gensim.utils.SaveLoad):
         if dictionary is None:
             dictionary = gensim.corpora.Dictionary(preprocessed())
             if len(docids) >= 1000:
-                dictionary.filter_extremes(no_below=5, no_above=0.2, keep_n=50000)
+                dictionary.filter_extremes(no_below=3, no_above=0.05, keep_n=250000)
             else:
                 logger.warning("training model on only %i documents; is this intentional?" % len(docids))
                 dictionary.filter_extremes(no_below=0, no_above=1.0, keep_n=50000)
